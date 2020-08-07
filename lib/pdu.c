@@ -47,6 +47,10 @@
 #include <strings.h>
 #endif
 
+#ifdef HAVE_ARPA_INET_H
+#include <arpa/inet.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -507,7 +511,7 @@ int rpc_process_pdu(struct rpc_context *rpc, char *buf, int size)
 	int pos;
         int32_t recordmarker = 0;
 	unsigned int hash;
-	uint32_t xid;
+	int32_t xid;
 	char *reasbuf = NULL;
 
 	assert(rpc->magic == RPC_CONTEXT_MAGIC);
