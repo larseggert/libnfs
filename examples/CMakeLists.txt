@@ -27,4 +27,11 @@ endif()
 foreach(TARGET ${EXAMPLES})
   add_executable(${TARGET} ${TARGET}.c)
   target_link_libraries(${TARGET} nfs ${EXTRA_LIBRARIES})
+  target_include_directories(${TARGET}
+                             INTERFACE PRIVATE
+                              ${PROJECT_SOURCE_DIR}/mount
+                              ${PROJECT_SOURCE_DIR}/portmap
+                              ${PROJECT_SOURCE_DIR}/nfs
+                              ${PROJECT_SOURCE_DIR}/nfs4
+                              ${PROJECT_SOURCE_DIR}/rquota)
 endforeach()
