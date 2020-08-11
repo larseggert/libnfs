@@ -3,17 +3,6 @@
 
 #include "posix.h"
 
-uid_t getuid(void)
-{
-    return 0;
-}
-
-
-uid_t getgid(void)
-{
-    return 0;
-}
-
 
 int dup2(int fildes, int fildes2)
 {

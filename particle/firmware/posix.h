@@ -6,10 +6,6 @@
 extern "C" {
 #endif
 
-extern uid_t getuid(void);
-
-extern uid_t getgid(void);
-
 extern int dup2(int fildes, int fildes2);
 
 extern int gettimeofday(struct timeval * restrict tp, void * restrict tzp);
