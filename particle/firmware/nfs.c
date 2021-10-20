@@ -65,7 +65,11 @@ WSADATA wsaData;
 #include <netinet/in.h>
 #endif
 
-#include <stdio.h>
+
+#include "debug.h"
+#define printf(...) DEBUG(__VA_ARGS__)
+
+// #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -200,7 +204,9 @@ void nfs_fsinfo_cb(struct rpc_context * rpc _U_,
                    void * private_data)
 {
     struct client * client = private_data;
+#ifdef DEBUG_BUILD
     FSINFO3res * res = data;
+#endif
 
     if (status == RPC_STATUS_ERROR) {
         printf("nfs/fsinfo call failed with \"%s\"\n", (char *)data);
@@ -527,12 +533,15 @@ int nfs_transaction(void)
     struct pollfd pfd;
     struct client client;
 
+    printf("%s:%u", __FILE__, __FILE__);
+
     rpc = rpc_init_context();
     if (rpc == NULL) {
         printf("failed to init context\n");
         exit(10);
     }
 
+    printf("%s:%u", __FILE__, __FILE__);
     client.server = SERVER;
     client.export = EXPORT;
     client.is_finished = 0;
@@ -542,6 +551,7 @@ int nfs_transaction(void)
         exit(10);
     }
 
+    printf("%s:%u", __FILE__, __FILE__);
     for (;;) {
         pfd.fd = rpc_get_fd(rpc);
         pfd.events = rpc_which_events(rpc);
@@ -558,6 +568,7 @@ int nfs_transaction(void)
             break;
         }
     }
+    printf("%s:%u", __FILE__, __FILE__);
 
     rpc_destroy_context(rpc);
     rpc = NULL;

@@ -511,7 +511,7 @@ int rpc_process_pdu(struct rpc_context *rpc, char *buf, int size)
 	int pos;
         int32_t recordmarker = 0;
 	unsigned int hash;
-	int32_t xid;
+	uint32_t xid;
 	char *reasbuf = NULL;
 
 	assert(rpc->magic == RPC_CONTEXT_MAGIC);

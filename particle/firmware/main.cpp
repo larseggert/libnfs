@@ -62,7 +62,7 @@ void button_action()
     waitUntil(WiFi.ready);
     digitalWrite(led, HIGH);
 
-    printf("Particle Device OS: %lu.%lu.%lu",
+    DEBUG("Particle Device OS: %lu.%lu.%lu",
            (System.versionNumber() & 0xff000000) >> 24,
            (System.versionNumber() & 0x00ff0000) >> 16,
            (System.versionNumber() & 0x0000ff00) >> 8);

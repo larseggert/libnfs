@@ -18,10 +18,7 @@
 
 #define _GNU_SOURCE
 
-#ifndef __APPLE__
 #include <asm/fcntl.h>
-#endif
-
 #include <errno.h>
 #include <poll.h>
 #include <stdio.h>

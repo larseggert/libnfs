@@ -13,10 +13,10 @@ set(INSTALL_PKGCONFIG_DIR "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" CACHE PATH "In
 set(INSTALL_CMAKE_DIR "${CMAKE_INSTALL_PREFIX}/lib/cmake/libnfs" CACHE PATH "Installation directory for cmake (.cmake) files")
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
-option(ENABLE_TESTS "Build and run test programs" ON)
+option(ENABLE_TESTS "Build and run test programs" OFF)
 option(ENABLE_DOCUMENTATION "Build Documentation" OFF)
-option(ENABLE_UTILS "Build util programs" ON)
-option(ENABLE_EXAMPLES "Build example programs" ON)
+option(ENABLE_UTILS "Build util programs" OFF)
+option(ENABLE_EXAMPLES "Build example programs" OFF)
 
 if(ENABLE_TESTS)
   set(ENABLE_UTILS ON CACHE BOOL "Building utils required by tests" FORCE)
