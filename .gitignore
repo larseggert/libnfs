@@ -37,3 +37,13 @@ stamp-h1
 libnfs.pc
 !libnfs.pc.in
 build
+
+.DS_Store
+particle/bin
+particle/*.bin
+particle/firmware/include
+particle/firmware/lib
+particle/firmware/mount
+particle/firmware/nfs
+particle/firmware/portmap
+particle/firmware/rquota

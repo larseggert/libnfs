@@ -94,6 +94,10 @@
 #include "win32_errnowrapper.h"
 #endif
 
+#ifdef PARTICLE
+#include "posix.h"
+#endif
+
 #ifndef MSG_NOSIGNAL
 #if (defined(__APPLE__) && defined(__MACH__)) || defined(PS2_EE)
 #define MSG_NOSIGNAL 0
