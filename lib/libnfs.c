@@ -825,7 +825,7 @@ rpc_connect_port_internal(struct rpc_context *rpc, int port, struct rpc_cb_data 
 int
 rpc_connect_port_async(struct rpc_context *rpc, const char *server,
                        int port,
-                       int program, int version,
+                       long program, int version,
                        rpc_cb cb, void *private_data)
 {
 	struct rpc_cb_data *data;
@@ -853,7 +853,7 @@ rpc_connect_port_async(struct rpc_context *rpc, const char *server,
 
 int
 rpc_connect_program_async(struct rpc_context *rpc, const char *server,
-                          int program, int version,
+                          long program, int version,
                           rpc_cb cb, void *private_data)
 {
 	struct rpc_cb_data *data;
@@ -2090,7 +2090,7 @@ nfs_get_timeout(struct nfs_context *nfs)
 }
 
 int
-rpc_null_async(struct rpc_context *rpc, int program, int version, rpc_cb cb,
+rpc_null_async(struct rpc_context *rpc, long program, int version, rpc_cb cb,
                void *private_data)
 {
 	struct rpc_pdu *pdu;

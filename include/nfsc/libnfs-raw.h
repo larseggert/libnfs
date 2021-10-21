@@ -127,7 +127,7 @@ struct service_proc {
  * Register a service callback table for program/version.
  * Can only be used with contexts created with rpc_init_server_context()
  */
-EXTERN int rpc_register_service(struct rpc_context *rpc, int program,
+EXTERN int rpc_register_service(struct rpc_context *rpc, long program,
                                 int version, struct service_proc *procs,
                                 int num_procs);
 
@@ -215,7 +215,7 @@ EXTERN int rpc_connect_async(struct rpc_context *rpc, const char *server,
  */
 EXTERN int rpc_connect_program_async(struct rpc_context *rpc,
                                      const char *server,
-                                     int program, int version,
+                                     long program, int version,
                                      rpc_cb cb, void *private_data);
 
 /*
@@ -239,7 +239,7 @@ EXTERN int rpc_connect_program_async(struct rpc_context *rpc,
  */
 EXTERN int rpc_connect_port_async(struct rpc_context *rpc, const char *server,
                                   int port,
-                                  int program, int version,
+                                  long program, int version,
                                   rpc_cb cb, void *private_data);
 
 /*
@@ -292,7 +292,7 @@ EXTERN int rpc_pmap2_null_async(struct rpc_context *rpc,
  * RPC_STATUS_CANCEL  : The command was cancelled.
  *                      data is NULL.
  */
-EXTERN int rpc_pmap2_getport_async(struct rpc_context *rpc, int program,
+EXTERN int rpc_pmap2_getport_async(struct rpc_context *rpc, long program,
                                    int version, int protocol,
                                    rpc_cb cb, void *private_data);
 
@@ -313,7 +313,7 @@ EXTERN int rpc_pmap2_getport_async(struct rpc_context *rpc, int program,
  * RPC_STATUS_CANCEL  : The command was cancelled.
  *                      data is NULL.
  */
-EXTERN int rpc_pmap2_set_async(struct rpc_context *rpc, int program,
+EXTERN int rpc_pmap2_set_async(struct rpc_context *rpc, long program,
                                int version, int protocol, int port,
                                rpc_cb cb, void *private_data);
 
@@ -334,7 +334,7 @@ EXTERN int rpc_pmap2_set_async(struct rpc_context *rpc, int program,
  * RPC_STATUS_CANCEL  : The command was cancelled.
  *                      data is NULL.
  */
-EXTERN int rpc_pmap2_unset_async(struct rpc_context *rpc, int program,
+EXTERN int rpc_pmap2_unset_async(struct rpc_context *rpc, long program,
                                  int version, int protocol, int port,
                                  rpc_cb cb, void *private_data);
 
@@ -375,7 +375,7 @@ EXTERN int rpc_pmap2_dump_async(struct rpc_context *rpc, rpc_cb cb,
  * RPC_STATUS_CANCEL  : The command was cancelled.
  *                      data is NULL.
  */
-EXTERN int rpc_pmap2_callit_async(struct rpc_context *rpc, int program,
+EXTERN int rpc_pmap2_callit_async(struct rpc_context *rpc, long program,
                                   int version, int procedure,
                                   char *data, int datalen,
                                   rpc_cb cb, void *private_data);
@@ -505,7 +505,7 @@ EXTERN int rpc_pmap3_dump_async(struct rpc_context *rpc,
  * RPC_STATUS_CANCEL  : The command was cancelled.
  *                      data is NULL.
  */
-EXTERN int rpc_pmap3_callit_async(struct rpc_context *rpc, int program,
+EXTERN int rpc_pmap3_callit_async(struct rpc_context *rpc, long program,
                                   int version, int procedure,
                                   char *data, int datalen,
                                   rpc_cb cb, void *private_data);
@@ -2309,7 +2309,7 @@ EXTERN int rpc_nfs4_compound_async2(struct rpc_context *rpc, rpc_cb cb,
  * RPC_STATUS_CANCEL  : The command was cancelled.
  *                      data is NULL.
  */
-EXTERN int rpc_null_async(struct rpc_context *rpc, int program, int version,
+EXTERN int rpc_null_async(struct rpc_context *rpc, long program, int version,
                           rpc_cb cb, void *private_data);
 
 

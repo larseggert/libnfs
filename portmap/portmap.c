@@ -46,7 +46,7 @@ int rpc_pmap2_null_async(struct rpc_context *rpc, rpc_cb cb, void *private_data)
 	return 0;
 }
 
-int rpc_pmap2_getport_async(struct rpc_context *rpc, int program, int version, int protocol, rpc_cb cb, void *private_data)
+int rpc_pmap2_getport_async(struct rpc_context *rpc, long program, int version, int protocol, rpc_cb cb, void *private_data)
 {
 	struct rpc_pdu *pdu;
 	struct pmap2_mapping m;
@@ -75,7 +75,7 @@ int rpc_pmap2_getport_async(struct rpc_context *rpc, int program, int version, i
 	return 0;
 }
 
-int rpc_pmap2_set_async(struct rpc_context *rpc, int program, int version, int protocol, int port, rpc_cb cb, void *private_data)
+int rpc_pmap2_set_async(struct rpc_context *rpc, long program, int version, int protocol, int port, rpc_cb cb, void *private_data)
 {
 	struct rpc_pdu *pdu;
 	struct pmap2_mapping m;
@@ -104,7 +104,7 @@ int rpc_pmap2_set_async(struct rpc_context *rpc, int program, int version, int p
 	return 0;
 }
 
-int rpc_pmap2_unset_async(struct rpc_context *rpc, int program, int version, int protocol, int port, rpc_cb cb, void *private_data)
+int rpc_pmap2_unset_async(struct rpc_context *rpc, long program, int version, int protocol, int port, rpc_cb cb, void *private_data)
 {
 	struct rpc_pdu *pdu;
 	struct pmap2_mapping m;
@@ -151,7 +151,7 @@ int rpc_pmap2_dump_async(struct rpc_context *rpc, rpc_cb cb, void *private_data)
 	return 0;
 }
 
-int rpc_pmap2_callit_async(struct rpc_context *rpc, int program, int version, int procedure, char *data, int datalen, rpc_cb cb, void *private_data)
+int rpc_pmap2_callit_async(struct rpc_context *rpc, long program, int version, int procedure, char *data, int datalen, rpc_cb cb, void *private_data)
 {
 	struct rpc_pdu *pdu;
 	struct pmap2_call_args ca;
@@ -311,7 +311,7 @@ int rpc_pmap3_gettime_async(struct rpc_context *rpc, rpc_cb cb, void *private_da
 	return 0;
 }
 
-int rpc_pmap3_callit_async(struct rpc_context *rpc, int program, int version, int procedure, char *data, int datalen, rpc_cb cb, void *private_data)
+int rpc_pmap3_callit_async(struct rpc_context *rpc, long program, int version, int procedure, char *data, int datalen, rpc_cb cb, void *private_data)
 {
 	struct rpc_pdu *pdu;
 	struct pmap3_call_args ca;

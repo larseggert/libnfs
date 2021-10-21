@@ -144,7 +144,7 @@ static struct rpc_pdu *rpc_allocate_reply_pdu(struct rpc_context *rpc,
 	return pdu;
 }
 
-struct rpc_pdu *rpc_allocate_pdu2(struct rpc_context *rpc, int program, int version, int procedure, rpc_cb cb, void *private_data, zdrproc_t zdr_decode_fn, int zdr_decode_bufsize, size_t alloc_hint)
+struct rpc_pdu *rpc_allocate_pdu2(struct rpc_context *rpc, long program, int version, int procedure, rpc_cb cb, void *private_data, zdrproc_t zdr_decode_fn, int zdr_decode_bufsize, size_t alloc_hint)
 {
 	struct rpc_pdu *pdu;
 	struct rpc_msg msg;
@@ -210,7 +210,7 @@ struct rpc_pdu *rpc_allocate_pdu2(struct rpc_context *rpc, int program, int vers
 	return pdu;
 }
 
-struct rpc_pdu *rpc_allocate_pdu(struct rpc_context *rpc, int program, int version, int procedure, rpc_cb cb, void *private_data, zdrproc_t zdr_decode_fn, int zdr_decode_bufsize)
+struct rpc_pdu *rpc_allocate_pdu(struct rpc_context *rpc, long program, int version, int procedure, rpc_cb cb, void *private_data, zdrproc_t zdr_decode_fn, int zdr_decode_bufsize)
 {
 	return rpc_allocate_pdu2(rpc, program, version, procedure, cb, private_data, zdr_decode_fn, zdr_decode_bufsize, 0);
 }

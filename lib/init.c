@@ -437,7 +437,7 @@ int rpc_get_timeout(struct rpc_context *rpc)
 	return rpc->timeout;
 }
 
-int rpc_register_service(struct rpc_context *rpc, int program, int version,
+int rpc_register_service(struct rpc_context *rpc, long program, int version,
                          struct service_proc *procs, int num_procs)
 {
         struct rpc_endpoint *endpoint;
@@ -465,3 +465,12 @@ int rpc_register_service(struct rpc_context *rpc, int program, int version,
 
         return 0;
 }
+
+
+#ifdef RIOT_BOARD
+inline int dup2(int fildes, int fildes2)
+{
+    close(fildes2);
+    return fcntl(fildes, F_DUPFD, fildes2);
+}
+#endif

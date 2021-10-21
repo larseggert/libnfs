@@ -36,6 +36,18 @@ typedef char *caddr_t;
 #endif
 #endif
 
+#ifdef RIOT_BOARD
+#include <sys/types.h>
+#ifndef __u_int_defined
+typedef unsigned int u_int;
+#endif
+#define __u_int_defined
+#ifndef __caddr_t_defined
+typedef char * caddr_t;
+#define __caddr_t_defined
+#endif
+#endif
+
 #include <stdio.h>
 #include <assert.h>
 #include <stdint.h>

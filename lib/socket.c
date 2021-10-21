@@ -141,7 +141,7 @@ set_nonblocking(int fd)
 static void
 set_nolinger(int fd)
 {
-#if !defined(PS2_EE)        
+#if !defined(PS2_EE) && !defined(RIOT_BOARD)
 	struct linger lng;
 	lng.l_onoff = 1;
 	lng.l_linger = 0;
@@ -292,7 +292,11 @@ rpc_write_to_socket(struct rpc_context *rpc)
 	return ret;
 }
 
+#if defined(PARTICLE) || defined (RIOT_BOARD)
+#define MAX_UDP_SIZE 2048
+#else
 #define MAX_UDP_SIZE 65536
+#endif
 static int
 rpc_read_from_socket(struct rpc_context *rpc)
 {
@@ -743,6 +747,7 @@ rpc_connect_sockaddr_async(struct rpc_context *rpc)
 static int
 rpc_set_sockaddr(struct rpc_context *rpc, const char *server, int port)
 {
+#ifndef RIOT_BOARD
 	struct addrinfo *ai = NULL;
 
 	if (getaddrinfo(server, NULL, NULL, &ai) != 0) {
@@ -776,7 +781,7 @@ rpc_set_sockaddr(struct rpc_context *rpc, const char *server, int port)
 #endif
 	}
 	freeaddrinfo(ai);
-
+#endif
         return 0;
 }
 
@@ -936,6 +941,7 @@ rpc_reconnect_requeue(struct rpc_context *rpc)
 int
 rpc_bind_udp(struct rpc_context *rpc, char *addr, int port)
 {
+#ifndef RIOT_BOARD
 	struct addrinfo *ai = NULL;
 	char service[6];
 
@@ -979,7 +985,7 @@ rpc_bind_udp(struct rpc_context *rpc, char *addr, int port)
 	}
 
 	freeaddrinfo(ai);
-
+#endif
 	return 0;
 }
 
@@ -987,6 +993,7 @@ int
 rpc_set_udp_destination(struct rpc_context *rpc, char *addr, int port,
                         int is_broadcast)
 {
+#ifndef RIOT_BOARD
 	struct addrinfo *ai = NULL;
 	char service[6];
 
@@ -1007,7 +1014,7 @@ rpc_set_udp_destination(struct rpc_context *rpc, char *addr, int port,
 
 	memcpy(&rpc->udp_dest, ai->ai_addr, ai->ai_addrlen);
 	freeaddrinfo(ai);
-
+#endif
 	rpc->is_broadcast = is_broadcast;
 	setsockopt(rpc->fd, SOL_SOCKET, SO_BROADCAST, (char *)&is_broadcast,
                    sizeof(is_broadcast));

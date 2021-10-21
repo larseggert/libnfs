@@ -27,9 +27,72 @@
 #include "ps2_compat.h"
 #endif
 
+#ifdef RIOT_BOARD
+#include <fcntl.h>
+#include <unistd.h>
+
+#ifndef POLLIN
+#define POLLIN 1
+#endif
+
+#ifndef POLLOUT
+#define POLLOUT 2
+#endif
+
+#ifndef POLLERR
+#define POLLERR 3
+#endif
+
+#ifndef POLLHUP
+#define POLLHUP 4
+#endif
+
+#ifndef MSG_DONTWAIT
+#define MSG_DONTWAIT 0
+#endif
+
+#ifndef MSG_NOSIGNAL
+#define MSG_NOSIGNAL 0
+#endif
+
+#ifndef IPPORT_RESERVED
+#define IPPORT_RESERVED 1024
+#endif
+
+#ifndef getservbyport
+#define getservbyport(...) 0
+#endif
+
+#ifndef getpid
+#define getpid(...) 0
+#endif
+
+#ifndef getuid
+#define getuid(...) 0
+#endif
+
+#ifndef getgid
+#define getgid(...) 0
+#endif
+
+#ifndef IFNAMSIZ
+#define IFNAMSIZ 8
+#endif
+
+#ifndef O_NONBLOCK
+#define O_NONBLOCK 0
+#endif
+
+#ifdef _U_
+#undef _U_
+#endif
+#define _U_ __attribute__((unused))
+
+#endif
+
 #include <stdint.h>
 #if defined(__ANDROID__) || defined(AROS) || defined(__PPU__) \
- || ( defined(__APPLE__) && defined(__MACH__) )
+ || ( defined(__APPLE__) && defined(__MACH__) ) || defined(RIOT_BOARD)
 #include <sys/time.h>
 #else
 #include <time.h>
